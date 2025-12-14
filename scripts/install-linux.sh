@@ -16,7 +16,7 @@ Requires: bash, curl, python3, chmod.
 EOF
 }
 
-REPO="owner/newsdesk"
+REPO="UA-99/newsdesk"
 VERSION="latest"
 PREFIX="$HOME/.local/share/newsdesk"
 
