@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Newsdesk</title>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="brand">
+            <div class="brand-title">Newsdesk</div>
+            <div class="brand-sub">Unified headlines</div>
+          </div>
+          <button id="openControls" class="iconbtn sidebar-toggle" title="Toggle sidebar">☰</button>
+        </div>
+
+        <div class="sidebar-content">
+          <div class="controls">
+            <label class="label" for="sourceFilter">Source</label>
+            <select id="sourceFilter"></select>
+
+            <label class="label" for="q">Search</label>
+            <input id="q" placeholder="Title or snippet" />
+
+            <div class="row">
+              <button id="refresh" class="btn">Refresh list</button>
+              <button id="toggleDense" class="btn btn-secondary" title="Toggle compact view">Compact</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Source colors</div>
+            <select id="colorSource"></select>
+
+            <label class="label" for="textColor">Text color</label>
+            <input type="color" id="textColor" value="#ffffff" />
+
+            <label class="label" for="bgColor">Background</label>
+            <input type="color" id="bgColor" value="#000000" />
+
+            <button id="saveColors" class="btn btn-secondary">Save colors</button>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Add source</div>
+            <input id="newSourceName" placeholder="Name" />
+            <input id="newSourceFeed" placeholder="Feed URL" />
+            <input id="newSourceDomain" placeholder="Domain (example.com)" />
+            <div class="row">
+              <input type="color" id="newSourceTextColor" value="#111111" title="Text color" />
+              <input type="color" id="newSourceBgColor" value="#ffffff" title="Background color" />
+            </div>
+            <button id="addSource" class="btn">Add source</button>
+            <span class="muted" id="addSourceStatus"></span>
+          </div>
+
+          <div class="footer">
+            <span class="muted" id="status">Ready</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="listbar">
+          <div class="listbar-info">
+            <div class="listbar-title">Front Page</div>
+            <div class="listbar-sub" id="count"></div>
+          </div>
+          <div class="listbar-actions">
+            <button id="toggleReader" class="btn btn-secondary" title="Toggle reader mode">Reader</button>
+            <button id="closeArticle" class="btn btn-secondary" title="Close article">Close</button>
+          </div>
+        </header>
+
+        <section id="list" class="list"></section>
+      </main>
+      <div class="gutter">
+        <div class="gutter-placeholder" aria-hidden="true">
+          <div class="gutter-icon">🗞️</div>
+          <div class="gutter-hint">Select a headline to load the article</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

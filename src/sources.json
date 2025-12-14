@@ -1,0 +1,9 @@
+[
+  { "id": "nyt", "name": "NYT", "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", "domain": "nytimes.com" },
+  { "id": "wsj", "name": "WSJ", "feedUrl": "https://feeds.a.dj.com/rss/RSSWorldNews.xml", "domain": "wsj.com" },
+  { "id": "politico", "name": "Politico", "feedUrl": "https://rss.politico.com/politics-news.xml", "domain": "politico.com" },
+  { "id": "thehill", "name": "The Hill", "feedUrl": "https://thehill.com/rss/syndicator/19109", "domain": "thehill.com" },
+  { "id": "tnr", "name": "The New Republic", "feedUrl": "https://newrepublic.com/rss.xml", "domain": "newrepublic.com" },
+  { "id": "thenation", "name": "The Nation", "feedUrl": "https://www.thenation.com/feed/?post_type=article", "domain": "thenation.com" },
+  { "id": "pcgamer", "name": "PC Gamer", "feedUrl": "https://www.pcgamer.com/rss/", "domain": "pcgamer.com" }
+]
