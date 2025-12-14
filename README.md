@@ -1,6 +1,6 @@
-<img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/2c7cd6da-5737-4115-b1a5-319a4bfc2304" /># Newsdesk
+# Newsdesk
 
-![UI screenshot]([https://raw.githubusercontent.com/UA-99/yt-dlp-gui/main/UI.png](https://github.com/UA-99/newsdesk/blob/main/screencap.png))
+<img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/2c7cd6da-5737-4115-b1a5-319a4bfc2304" />
 
 Desktop RSS reader built with Electron. Provides:
 
