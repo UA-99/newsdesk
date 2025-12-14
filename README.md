@@ -1,4 +1,6 @@
-# Newsdesk
+<img width="1200" height="800" alt="image" src="https://github.com/user-attachments/assets/2c7cd6da-5737-4115-b1a5-319a4bfc2304" /># Newsdesk
+
+![UI screenshot]([https://raw.githubusercontent.com/UA-99/yt-dlp-gui/main/UI.png](https://github.com/UA-99/newsdesk/blob/main/screencap.png))
 
 Desktop RSS reader built with Electron. Provides:
 
@@ -17,20 +19,8 @@ npm start
 
 Feeds and source metadata live in `src/sources.json`. Renderer assets are in the `renderer/` folder.
 
-## Building releases
-
-Releases are produced with [electron-builder](https://www.electron.build/):
-
-```bash
-npm install
-npm run dist
-```
-
-GitHub Actions (`.github/workflows/release.yml`) builds signed artifacts for Linux (AppImage + deb), macOS (dmg), and Windows (NSIS) whenever you push a tag such as `v0.1.0`.
-
 ## Linux installer
 
-After publishing a release, Linux users can install the latest AppImage by running:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/<owner>/newsdesk/main/scripts/install-linux.sh | bash -s -- --repo <owner>/newsdesk
