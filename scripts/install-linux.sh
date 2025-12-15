@@ -55,12 +55,26 @@ else
   RELEASE_URL="${API_URL}/tags/${VERSION}"
 fi
 
-echo "Fetching release metadata (${VERSION})..."
-JSON="$(curl -fsSL "$RELEASE_URL")"
+TMP_DIR="$(mktemp -d)"
+trap 'rm -rf "$TMP_DIR"' EXIT
 
-ASSET_URL="$(python3 - "$JSON" <<'PY'
-import json, sys
-data = json.loads(sys.argv[1])
+RELEASE_JSON="${TMP_DIR}/release.json"
+
+echo "Fetching release metadata (${VERSION})..."
+curl -fsSL "$RELEASE_URL" -o "$RELEASE_JSON"
+
+ASSET_URL="$(python3 - "$RELEASE_JSON" <<'PY'
+import json
+import pathlib
+import sys
+
+metadata_path = pathlib.Path(sys.argv[1])
+try:
+    data = json.loads(metadata_path.read_text())
+except json.JSONDecodeError as exc:
+    sys.stderr.write(f"Failed to parse release metadata: {exc}\n")
+    sys.exit(1)
+
 assets = data.get("assets") or []
 for asset in assets:
     url = asset.get("browser_download_url", "")
@@ -75,12 +89,9 @@ if [[ -z "$ASSET_URL" ]]; then
   exit 1
 fi
 
-TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "$TMP_DIR"' EXIT
-
 APPIMAGE_PATH="${TMP_DIR}/newsdesk.AppImage"
 echo "Downloading AppImage..."
-curl -L "$ASSET_URL" -o "$APPIMAGE_PATH"
+curl -fsSL "$ASSET_URL" -o "$APPIMAGE_PATH"
 chmod +x "$APPIMAGE_PATH"
 
 INSTALL_DIR="$PREFIX"

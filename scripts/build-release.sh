@@ -43,6 +43,15 @@ if ! command -v npm >/dev/null 2>&1; then
   exit 1
 fi
 
+if command -v sha256sum >/dev/null 2>&1; then
+  CHECKSUM_CMD=(sha256sum)
+elif command -v shasum >/dev/null 2>&1; then
+  CHECKSUM_CMD=(shasum -a 256)
+else
+  echo "sha256sum or shasum is required to generate checksums." >&2
+  exit 1
+fi
+
 if [[ "$SKIP_INSTALL" != "true" ]]; then
   echo "Installing dependencies..."
   npm install
@@ -69,7 +78,7 @@ if [[ "${#ARTIFACTS[@]}" -eq 0 ]]; then
 fi
 
 echo "Writing checksums..."
-(cd "$RELEASE_DIR" && sha256sum "${ARTIFACTS[@]##*/}" > SHA256SUMS)
+(cd "$RELEASE_DIR" && "${CHECKSUM_CMD[@]}" "${ARTIFACTS[@]##*/}" > SHA256SUMS)
 
 echo "Release assets written to $RELEASE_DIR:"
 for artifact in "${ARTIFACTS[@]}"; do

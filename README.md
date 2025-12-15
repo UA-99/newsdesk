@@ -22,9 +22,13 @@ npm start
 
 
 ```bash
-./scripts/build-release.sh
+./scripts/build-release.sh [--skip-install]
 ```
 
+The script runs `electron-builder`, copies the generated AppImage/tarball into
+`release/<version>`, and writes a `SHA256SUMS` file (using whichever of
+`sha256sum` or `shasum` is available). Pass `--skip-install` if dependencies are
+already installed.
 
 ## Linux Install Script
 
@@ -33,3 +37,12 @@ npm start
 curl -fsSL https://raw.githubusercontent.com/UA-99/newsdesk/main/scripts/install-linux.sh -o install-newsdesk.sh
 bash install-newsdesk.sh
 ```
+
+`install-linux.sh` downloads the latest (or a specific) AppImage release, drops
+it into `~/.local/share/newsdesk`, adds a `newsdesk` symlink under
+`~/.local/bin`, and registers a `.desktop` entry for launching via app menus.
+You can override the defaults:
+
+- `--version vX.Y.Z` installs a specific tag.
+- `--repo owner/name` points the script at a fork.
+- `--prefix DIR` changes the install location.
