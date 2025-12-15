@@ -7,7 +7,7 @@ Newsdesk release packager
 
 Usage: build-release.sh [--skip-install]
 
-Builds the Electron bundles (AppImage + deb) via electron-builder and copies
+Builds the Electron bundles (AppImage + tarball) via electron-builder and copies
 the resulting artifacts into release/<version>. A SHA256SUMS file is generated
 for convenience when uploading assets to UA-99/newsdesk releases.
 
@@ -49,7 +49,7 @@ if [[ "$SKIP_INSTALL" != "true" ]]; then
 fi
 
 echo "Building distributables via electron-builder..."
-npx electron-builder --linux AppImage deb --publish never
+npx electron-builder --linux AppImage tar.gz --publish never
 
 VERSION="$(node -p "require('./package.json').version")"
 RELEASE_DIR="$ROOT_DIR/release/$VERSION"
@@ -57,7 +57,7 @@ mkdir -p "$RELEASE_DIR"
 
 shopt -s nullglob
 ARTIFACTS=()
-for asset in dist/*.AppImage dist/*.deb; do
+for asset in dist/*.AppImage dist/*.tar.gz; do
   cp "$asset" "$RELEASE_DIR/"
   ARTIFACTS+=("$RELEASE_DIR/$(basename "$asset")")
 done
