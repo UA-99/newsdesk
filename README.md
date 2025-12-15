@@ -17,5 +17,19 @@ npm install
 npm start
 ```
 
-Feeds and source metadata live in `src/sources.json`. Renderer assets are in the `renderer/` folder.
 
+## Packaging & Releases
+
+
+```bash
+./scripts/build-release.sh
+```
+
+
+## Linux Install Script
+
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/UA-99/newsdesk/main/scripts/install-linux.sh -o install-newsdesk.sh
+bash install-newsdesk.sh --version v0.1.0
+```

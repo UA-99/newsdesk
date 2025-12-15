@@ -8,7 +8,7 @@ Newsdesk Linux installer
 Usage: install-linux.sh [--repo owner/name] [--version vX.Y.Z] [--prefix DIR]
 
 Options:
-  --repo     GitHub repository that hosts releases (default: owner/newsdesk).
+  --repo     GitHub repository that hosts releases (default: UA-99/newsdesk).
   --version  Specific tag to install (default: latest release).
   --prefix   Installation directory (default: $HOME/.local/share/newsdesk).
 
