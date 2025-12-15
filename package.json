@@ -1,7 +1,9 @@
 {
   "name": "newsdesk",
   "version": "0.1.0",
+  "description": "Desktop RSS reader with reader mode, ad blocking, and customizable feed sources.",
   "main": "main.js",
+  "author": "Josh de Guzman (UA-99)",
   "type": "commonjs",
   "scripts": {
     "start": "electron .",
@@ -20,7 +22,8 @@
   "devDependencies": {
     "@electron/rebuild": "^4.0.2",
     "electron": "^39.2.7",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^25.1.8",
+    "tar": "^7.5.2"
   },
   "build": {
     "appId": "com.newsdesk.app",
@@ -35,6 +38,7 @@
     ],
     "asar": true,
     "linux": {
+      "icon": "images/newsdesk.png",
       "target": [
         "AppImage",
         "tar.gz"
@@ -42,10 +46,12 @@
       "category": "Network;News"
     },
     "mac": {
+      "icon": "images/newsdesk.icns",
       "category": "public.app-category.news",
       "target": "dmg"
     },
     "win": {
+      "icon": "images/newsdesk.ico",
       "target": "nsis"
     }
   }
