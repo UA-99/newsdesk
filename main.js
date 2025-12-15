@@ -1,7 +1,7 @@
 const { app, BrowserWindow, BrowserView, ipcMain, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
-const { ElectronBlocker } = require("@cliqz/adblocker-electron");
+const { ElectronBlocker } = require("@ghostery/adblocker-electron");
 const fetch = require("cross-fetch");
 const { Worker } = require("worker_threads");
 const readerWorkerPath = path.join(__dirname, "src", "reader-worker.js");
