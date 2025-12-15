@@ -31,5 +31,5 @@ npm start
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/UA-99/newsdesk/main/scripts/install-linux.sh -o install-newsdesk.sh
-bash install-newsdesk.sh --version v0.1.0
+bash install-newsdesk.sh
 ```
